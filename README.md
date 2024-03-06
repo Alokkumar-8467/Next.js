@@ -17,4 +17,13 @@ We can pass more than one dynamic routes at a time.
 `localhost:3000/api/users/[usersid]/post/[postid]`.
 
 
+# 6. Creating user API
+In this user API we are creating these API.
+
+POST -- user information json -- Create
+GET  -- return users json -- get users
+GET -- API/[userId] -- get single user
+PUT -- [userid] json information -- update user
+DELETE -- [userId] -- delete user
+
 
