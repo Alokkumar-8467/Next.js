@@ -26,4 +26,36 @@ GET -- API/[userId] -- get single user
 PUT -- [userid] json information -- update user
 DELETE -- [userId] -- delete user
 
+# 7. Creating work API
+
+
+# 8. Creating task API
+
+> In this we create task api and linked with user-api by using userId.
+
+How to add user and task api.
+We have two options
+1. First Approach for modeling.
+
+In this we make only one user-api.
+And inside it we pass user name,about,phone, email.
+And at end we pass the task object inside user api.
+And we get all details at a time.
+But it create a problem, when we fetch user api,
+it fetch task details also, but according to ouprogram requirment,
+we some time want user details and sometime user-tasdetails. 
+So, we move to the 2nd approach
+
+
+2. Second Approach
+In this approach we create user and user-task api,
+and linked with each other.
+For linking particular user with particular user-task,
+we use user-id.
+By user-id we find or identify which user it is.
+> Note: If we have a user, So by user we can't identif that user-task, But if we have a task and that task contain user-id then we identify that user.
+
+we can also reverse the process and pass task-id in user,
+So, we can tarvel from user to task and task to user
+
 
