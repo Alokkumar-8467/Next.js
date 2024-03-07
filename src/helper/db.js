@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import {User} from "../models/user";
+import {Work} from "../models/work";
 
 export const  connectDb = async () => {
     try {
@@ -8,13 +9,13 @@ export const  connectDb = async () => {
         });
         console.log("db Connected...")
 
-        const uuser = new User({
+        const user = new User({
             name: "test name",
             email:"test@gmail.com",
             password:"testpassword",
             about:"this is testing"
         })
-        await uuser.save();
+        await user.save();
         console.log("user is created");
 
         console.log(connection)

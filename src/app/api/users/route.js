@@ -4,6 +4,8 @@ import { NextResponse } from "next/server";
 
 connectDb();
 
+// get all user
+
 export async function GET(request){
     let users = []
     try {
@@ -19,6 +21,7 @@ export async function GET(request){
     return NextResponse.json(users);
 }
 
+// user post
 
 export async  function POST(request){
 
@@ -61,9 +64,9 @@ export async  function POST(request){
 
 
 
-    return NextResponse.json({
-        message : "posting user data",
-    });
+    // return NextResponse.json({
+    //     message : "posting user data",
+    // });
 
 }
 
