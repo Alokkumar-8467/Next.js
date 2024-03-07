@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { User } from "@/models/user";
 
 
+
 // get single user
 export async function GET(request, {params}){
     const {userId} = params;
