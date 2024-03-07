@@ -25,7 +25,7 @@ export async function GET(request){
 
 export async  function POST(request){
 
-    const {name, email, password, about,profileURL} =  await request.json()
+    const {name, email, password, about,profileURL } =  await request.json()
     console.log({name, email, password, about,profileURL})
 
     const user = new User({

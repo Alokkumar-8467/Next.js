@@ -1,11 +1,22 @@
 import { NextResponse } from "next/server";
+import { Task } from "@/models/task";
+import { connectDb } from "@/helper/db";
+import { getResponseMessage } from "@/helper/responseMessage";
+
 
 // get all task  
-export async function GET(){
-
+export async function GET(request){
+    try {
+        const tasks = await Task.find()
+        return NextResponse.json(tasks)
+    } catch (error) {
+        console.log(error)
+        return getResponseMessage("Error in getting data !!", 404, false);
+    }
 }
 
-// create task
+
+// create all the  task
 
 export async function POST(request){
     const { title, content, userId} = await request.json();
