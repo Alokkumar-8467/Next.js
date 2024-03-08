@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react'
 
 const CustomNavbar = () => {
-    console.log("first")
+
   return (
     <nav className="flex justify-between bg-blue-600 h-16 py-2 px-36 items-center">
         <div className='brand'>

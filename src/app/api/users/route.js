@@ -79,7 +79,3 @@ export async  function POST(request){
 //     {status: 201, statusText: "hey Changed text"}
 //     );
 // }
-
-
-export function PUT(){}
-export function UPDATE(){}
