@@ -10,10 +10,7 @@ export const  connectDb = async () => {
         console.log("db Connected...")
 
         const user = new User({
-            name: "test name",
-            email:"test@gmail.com",
-            password:"testpassword",
-            about:"this is testing"
+            
         })
         await user.save();
         console.log("user is created");
