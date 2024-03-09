@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react'
-import loginSvg from "../../assets/login.svg";
+import savetaskSvg from "../../assets/savetask.svg";
 import Image from 'next/image';
 import { addTask } from '@/services/taskServices';
 import { toast } from 'react-toastify';
@@ -113,7 +113,7 @@ const AddTask = () => {
                       <div className='mt-4 flex justify-center '>
                       <button className='bg-blue-500 py-2 px-3 rounded-lg hover:bg-blue-600'>Add Task</button>
                       <button className='bg-red-600 py-2 px-3 rounded-lg hover:bg-red-500 ms-3' >Clear Task</button>
-                      </div>
+                    </div>
                     {/* {
                       JSON.stringify(task)
                     } */}
@@ -123,7 +123,7 @@ const AddTask = () => {
         
         
         <div className='justify-center col-span-4 col-start-2 py-20 '>
-          <Image src={loginSvg} style={{width: "70%",alt:'Alok'}}
+          <Image src={savetaskSvg} style={{width: "70%",alt:'Alok'}}
           alt='Alok' />
         </div>
 

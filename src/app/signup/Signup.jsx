@@ -70,7 +70,7 @@ const Signup = () => {
                     <form action='#!' className='mt-5' onSubmit={doSignup}>
 
                         {/* For name */}
-                        <div className="mt-3">
+                          <div className="mt-3">
                             <label htmlFor="user_name" 
                             className='block text-sm font-medium mb-2 ps-3'>Username</label>
                             <input type='text' 
@@ -86,7 +86,7 @@ const Signup = () => {
                             }}
                             value={data.name}
                             />
-                        </div>
+                          </div>
 
                           {/* For email */}
                           <div className="mt-3">
