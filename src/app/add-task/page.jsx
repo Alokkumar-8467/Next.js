@@ -4,12 +4,10 @@ import ClipLoader from "react-spinners/ClipLoader";
 import React, { useEffect, useState } from 'react'
 import AddTask from './AddTask'
 
-
-
-
 const AddTaskPage = () => {
 
   const [loading , setLoading] = useState(false)
+
   useEffect(()=>{
     setLoading(true)
     setTimeout(() => {
@@ -21,12 +19,13 @@ const AddTaskPage = () => {
     <div>
       {
         loading ? 
-        <ClipLoader color="#36d7b7"  loading={loading} size={40}/> : <AddTask/>
+        <ClipLoader color="blue"  loading={loading} size={40}/> : <AddTask/>
       }
       
-        
     </div>
   )
 }
 
 export default AddTaskPage
+
+// 

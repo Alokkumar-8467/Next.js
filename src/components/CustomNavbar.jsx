@@ -28,10 +28,10 @@ const CustomNavbar = () => {
         <div>
             <ul className='flex space-x-4'>
                 <li>
-                    <a href='#!'>Login</a>
+                    <a href=''>Login</a>
                 </li>
                 <li>
-                    <a href='#!'>Signup</a>
+                    <a href='/signup'>Signup</a>
                 </li>
             </ul>
         </div>
