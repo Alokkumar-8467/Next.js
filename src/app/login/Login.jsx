@@ -3,17 +3,21 @@ import { toast } from 'react-toastify';
 import React, { useState } from 'react'
 import Image from 'next/image'
 import loginSvg from "../../assets/login.svg";
+import { login } from '@/services/userSignUpService';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
 
+    const router =useRouter();
     const [loginData , setLoginData] = useState({
         name:"",
         email:"",
         password:"",
     });
 
-    const loginFormSubmitted=(event)=>{
+    const loginFormSubmitted= async (event)=>{
         event.preventDefault();
+
         console.log(loginData)
         if (loginData.name.trim() === "" || loginData.name == null || loginData.email.trim() === "" || loginData.email == null || loginData.password.trim() === "" || loginData.password == null  ){
             toast.warning("Name,Email & Password is required !!", {
@@ -21,7 +25,34 @@ const Login = () => {
             });
             return;
           }
-        
+
+          try {
+            const result = await login(loginData)
+            console.log(result)
+            toast.success("Logged In",{
+              position: "top-center"
+            });
+          
+            // redirect to user-profile page.
+            router.push("/profile/user");
+
+          } catch (error) {
+            console.log(error);
+            toast.error("Error in login !! "  + error.response.data.message, {
+              position:"top-center",
+            });
+          }  
+      };
+
+    const resetLoginForm = () => {
+      setLoginData({
+        name:"",
+        email:"",
+        password:""
+      })
+      toast.success("Login Form Reset Succesfully ",{
+        position: "top-center"
+      })
     }
 
   return (
@@ -91,7 +122,7 @@ const Login = () => {
                         
                         <div className='mt-4 flex justify-center '>
                             <button className='bg-yellow-500 py-2 px-3 rounded-lg hover:bg-yellow-600'>Login</button>
-                            <button className='bg-red-600 py-2 px-3 rounded-lg hover:bg-red-500 ms-3' >Reset</button>
+                            <button className='bg-red-600 py-2 px-3 rounded-lg hover:bg-red-500 ms-3' onClick={resetLoginForm} >Reset</button>
                         </div>
 
                     </form>

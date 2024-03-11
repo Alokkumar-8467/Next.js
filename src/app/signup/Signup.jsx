@@ -35,27 +35,31 @@ const Signup = () => {
     });
     setData({
       name:"",
-    email:"",
-    password:"",
-    about:"",
-    profileURL:""
-    })
+      email:"",
+      password:"",
+      about:"",
+      profileURL:""
+    });
+
     } catch (error) {
       console.log(error)
-      toast.error("Signup Error !! User not registered " + error.response.data.message,{
+      toast.error("Signup Error !! " + error.response.data.message,{
         position: 'top-center'
       });
     }
     
   };
 
-  const resetForm = () => {
+  const resetSignupForm = () => {
     setData({
       name:"",
-    email:"",
-    password:"",
-    about:"",
-    profileURL:""
+      email:"",
+      password:"",
+      about:"",
+      profileURL:""
+    })
+    toast.success("SignUp Form Reset Succesfully ",{
+      position: "top-center"
     })
   }
  
@@ -66,7 +70,7 @@ const Signup = () => {
             <div className='col-span-10 col-start-6 py-5'>
                 <div className='py-5 '>
 
-                    <h1 className='text-3xl text-center'>Signup Here</h1>
+                    <h1 className='text-3xl text-center'>SignUp Here</h1>
                     <form action='#!' className='mt-5' onSubmit={doSignup}>
 
                         {/* For name */}
@@ -147,7 +151,7 @@ const Signup = () => {
                         <div className='mt-4 flex justify-center'>
                             <button type='submit' className='bg-yellow-400 py-2 px-3 rounded-lg hover:bg-yellow-500'>SignUp</button>
                             <button className='bg-red-600 py-2 px-3 rounded-lg hover:bg-red-500 ms-3'
-                            onClick={resetForm}
+                            onClick={resetSignupForm}
                             type='button'
                             >Reset</button>
                         </div>
