@@ -23,6 +23,8 @@ export function middleware(request) {
         //  accessing secured route
         if(!authToken){
             return NextResponse.redirect(new URL("/login", request.url));
+        } else{
+            // varify token
         }
     }
 
