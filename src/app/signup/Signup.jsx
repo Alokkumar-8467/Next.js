@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import React, { useState } from 'react'
 import signupSvg from "../../assets/signup.svg";
 import Image from 'next/image';
-import { signUp } from '@/services/userSignUpService';
+import { signUp } from '@/services/userService';
 
 const Signup = () => {
 

@@ -3,8 +3,12 @@ import { toast } from 'react-toastify';
 import React, { useState } from 'react'
 import Image from 'next/image'
 import loginSvg from "../../assets/login.svg";
+import { login } from '@/services/userService';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
+
+  const router = useRouter()
 
     const [loginData , setLoginData] = useState({
         name:"",
@@ -12,7 +16,7 @@ const Login = () => {
         password:"",
     });
 
-    const loginFormSubmitted=(event)=>{
+    const loginFormSubmitted= async (event)=>{
         event.preventDefault();
         console.log(loginData)
         if (loginData.name.trim() === "" || loginData.name == null || loginData.email.trim() === "" || loginData.email == null || loginData.password.trim() === "" || loginData.password == null  ){
@@ -21,8 +25,20 @@ const Login = () => {
             });
             return;
           }
-        
-    }
+
+          try {
+            const result = await login(loginData)
+            console.log(result)
+            toast.success("Login Success");
+            // redirect to some selected page
+            router.push("/profile/user");
+          } catch (error) {
+            console.log(error);
+            toast.error(error.response.data.message, {
+              position:"top-center",
+            });
+          }
+        };
 
   return (
     <div className="grid grid-cols-2 gap-4 shadow-xl h-full w-full" >
