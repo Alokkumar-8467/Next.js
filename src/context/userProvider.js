@@ -22,7 +22,7 @@ const UserProvider = ({children}) => {
                 setUser(undefined);
             }
         }
-        load();
+        if (!user) load();
     },[]);
 
   return (

@@ -25,27 +25,28 @@ export  async function POST (request) {
 
         // 3.generate token
 
-        const token = await jwt.sign({
+        const token =  jwt.sign({
             _id:user._id,
             name:user.name
         },process.env.JWT_KEY);
-        console.log("jwt token is here:")
 
         // 4. create Nextresponse -- cookies
 
         const response =  NextResponse.json({
             message: "Login Success !!",
-            success : true
+            success : true,
+            user: user,
         });
 
         response.cookies.set("authToken", token, {
             expiresIn : "1d",
             httpOnly: true,
         });
-
-        console.log(token);
+        
         console.log(user);
-        console.log(response);
+        console.log(token);
+        
+        // console.log(response);
 
         return response;
 

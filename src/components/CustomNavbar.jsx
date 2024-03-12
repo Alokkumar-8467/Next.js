@@ -4,11 +4,27 @@ import UserContext from '@/context/userContext';
 import Link from 'next/link';
 import React from 'react'
 import { useContext } from 'react';
+import { logout } from '@/services/userService';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const CustomNavbar = () => {
 
     const context = useContext(UserContext);
-    console.log(context)
+    const router = useRouter();
+    console.log(context);
+
+    async function doLogout(){
+        try {
+            const result = await logout()
+            console.log(result);
+            context.setUser(undefined);
+            router.push("/");
+        } catch (error) {
+            console.log(error);
+            toast.error("Logout Error");
+        }
+    }
 
   return (
     <nav className="flex justify-between bg-blue-600 h-16 py-2 px-36 items-center">
@@ -44,7 +60,7 @@ const CustomNavbar = () => {
                             <a href='#!'>{context.user.name}</a>
                         </li>
                         <li>
-                            <a href='#!'>Logout</a>
+                            <button onClick={doLogout}>Logout</button>
                         </li>
                     </>
                 )}

@@ -5,10 +5,13 @@ import Image from 'next/image'
 import loginSvg from "../../assets/login.svg";
 import { login } from '@/services/userService';
 import { useRouter } from 'next/navigation';
+import UserContext from '@/context/userContext';
+import { useContext } from 'react';
 
 const Login = () => {
 
-  const router = useRouter()
+  const router = useRouter();
+  const context = useContext(UserContext);
 
     const [loginData , setLoginData] = useState({
         name:"",
@@ -30,7 +33,11 @@ const Login = () => {
             const result = await login(loginData)
             console.log(result)
             toast.success("Login Success");
+            
             // redirect to some selected page
+
+            context.setUser(result.user);
+
             router.push("/profile/user");
           } catch (error) {
             console.log(error);
