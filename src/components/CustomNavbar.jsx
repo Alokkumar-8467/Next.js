@@ -1,13 +1,26 @@
 "use client";
 
 import UserContext from '@/context/userContext';
+import { logout } from '@/services/userService';
 import Link from 'next/link';
 import React, { useContext } from 'react'
+import { toast } from 'react-toastify';
 
 const CustomNavbar = () => {
 
     const context = useContext(UserContext);
-    console.log(context)
+    console.log(context);
+
+    async function doLogout(){
+        try {
+            const result  = await logout()
+            console.log(result)
+            context.setUser(undefined);
+        } catch (error) {
+            console.log(error)
+            toast.error("Logout Error");
+        }
+    }
 
   return (
     <nav className="flex justify-between bg-blue-600 h-16 py-2 px-36 items-center">
@@ -43,11 +56,10 @@ const CustomNavbar = () => {
                             <Link href='#!'>{context.user.name}</Link>
                         </li>
                         <li>
-                            <Link href='#!'>Logout</Link>
+                            <Link href='#!'  onClick={doLogout}>Logout</Link>
                         </li>
                     </>
-                    )
-                }
+                    )}
                 { !context.user && (
                     <>
                         <li>
@@ -57,8 +69,7 @@ const CustomNavbar = () => {
                             <Link href='/signup'>SignUp</Link>
                         </li>
                         </>
-                    )
-                }
+                    )}
             </ul>
         </div>
     </nav>

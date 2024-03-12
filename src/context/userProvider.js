@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import UserContext from './userContext'
 import { toast } from 'react-toastify';
-import { currentUser } from '@/services/userSignUpService';
+import { currentUser } from '@/services/userService';
 
 
 
@@ -14,18 +14,16 @@ const UserProvider = ({ children}) => {
 useEffect(() => {
     async function load(){
     try {
-       const logUser =  currentUser();
-       console.log(logUser)
-       setUser({...logUser})
+       const tempUser = await currentUser();
+       console.log(tempUser)
+       setUser({...tempUser})
     } catch (error) {
         console.log(error);
-        toast.error("error in loading current user",
-        setUser(undefined)
-        );
-    
+        toast.error("error in loading current user");
+        setUser(undefined);
     }
-    load();
 }
+load();
 }, []);
 
   return (

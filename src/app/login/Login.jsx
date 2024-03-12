@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import React, { useState } from 'react'
 import Image from 'next/image'
 import loginSvg from "../../assets/login.svg";
-import { login } from '@/services/userSignUpService';
+import { login } from '@/services/userService';
 import { useRouter } from 'next/navigation';
 
 const Login = () => {
@@ -38,7 +38,7 @@ const Login = () => {
 
           } catch (error) {
             console.log(error);
-            toast.error("Error in login !! "  + error.response.data.message, {
+            toast.error( error.response.data.message, {
               position:"top-center",
             });
           }  

@@ -16,11 +16,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
       <UserProvider>
-      <ToastContainer/>
+        <ToastContainer/>
         <CustomNavbar/>
-        <div className="mt-2">
-          {children}
-        </div>
+        <div className="mt-2">{children}</div>
         <Footer/>
       </UserProvider>
         </body>
