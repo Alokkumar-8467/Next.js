@@ -40,6 +40,16 @@ const Login = () => {
           }
         };
 
+        const resetForm = () => {
+          setLoginData({
+            name:"",
+          email:"",
+          password:"",
+          about:"",
+          profileURL:""
+          })
+        }
+
   return (
     <div className="grid grid-cols-2 gap-4 shadow-xl h-full w-full" >
         <div className="grid grid-cols-12 justify-center">
@@ -107,7 +117,7 @@ const Login = () => {
                         
                         <div className='mt-4 flex justify-center '>
                             <button className='bg-yellow-500 py-2 px-3 rounded-lg hover:bg-yellow-600'>Login</button>
-                            <button className='bg-red-600 py-2 px-3 rounded-lg hover:bg-red-500 ms-3' >Reset</button>
+                            <button className='bg-red-600 py-2 px-3 rounded-lg hover:bg-red-500 ms-3' onClick={resetForm}>Reset</button>
                         </div>
 
                     </form>

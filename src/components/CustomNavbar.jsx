@@ -1,9 +1,14 @@
 "use client";
 
+import UserContext from '@/context/userContext';
 import Link from 'next/link';
 import React from 'react'
+import { useContext } from 'react';
 
 const CustomNavbar = () => {
+
+    const context = useContext(UserContext);
+    console.log(context)
 
   return (
     <nav className="flex justify-between bg-blue-600 h-16 py-2 px-36 items-center">
@@ -14,7 +19,10 @@ const CustomNavbar = () => {
         </div>
         <div>
             <ul className='flex space-x-4'>
-                <li>
+                {
+                    context.user && (
+                        <>
+                        <li>
                     <Link href='/' className='hover:text-blue-300'>Home</Link>
                 </li>
                 <li>
@@ -23,16 +31,34 @@ const CustomNavbar = () => {
                 <li>
                     <Link href='/show-tasks'className='hover:text-blue-300'>Show Tasks</Link>
                 </li>
+                        </>
+                    )
+                } 
             </ul>
         </div>
         <div>
             <ul className='flex space-x-4'>
-                <li>
-                    <a href='/login'>Login</a>
-                </li>
-                <li>
-                    <a href='/signup'>Signup</a>
-                </li>
+                { context.user && (
+                    <>
+                        <li>
+                            <a href='#!'>{context.user.name}</a>
+                        </li>
+                        <li>
+                            <a href='#!'>Logout</a>
+                        </li>
+                    </>
+                )}
+                { !context.user && (
+                    <>
+                        <li>
+                            <a href='/login'>Login</a>
+                            </li>
+                        <li>
+                            <a href='/signup'>Signup</a>
+                        </li>
+                    </>
+                )}
+
             </ul>
         </div>
     </nav>
