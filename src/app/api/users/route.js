@@ -4,13 +4,12 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs"
 
 
-connectDb();
-
 // get all user
 
 export async function GET(request){
     let users = []
     try {
+        await connectDb();
         users = await User.find();
     } catch (error) {
         console.log(error)
@@ -43,7 +42,7 @@ export async  function POST(request){
         user.password, 
         parseInt(process.env.BCRYPT_SALT ));
         console.log(user);
-        
+        await connectDb();
     const createUser = await user.save()
 
     const response = NextResponse.json(user, {

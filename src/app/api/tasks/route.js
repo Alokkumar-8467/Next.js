@@ -4,9 +4,11 @@ import { connectDb } from "@/helper/db";
 import { getResponseMessage } from "@/helper/responseMessage";
 import jwt  from "jsonwebtoken";
 
+
 // get all task  
 export async function GET(request){
     try {
+        await connectDb();
         const tasks = await Task.find()
         return NextResponse.json(tasks)
     } catch (error) {
@@ -33,8 +35,8 @@ export async function POST(request){
             title,
             content,
             userId: data._id,
-            
         });
+        await connectDb();
         const createdTask = await task.save()
         return NextResponse.json(createdTask, {
             status:201,

@@ -17,6 +17,7 @@ export async function DELETE(request,{params}){
     const {userId} = params;
     
     try {
+        await connectDb();
         await User.deleteOne({
             _id:userId
         })
@@ -52,6 +53,7 @@ export async function PUT(request, {params}){
         user.password=password
         user.profileURL=profileURL
 
+        await connectDb();
         const updatedUser = await user.save();
         return NextResponse.json(updatedUser);
     } catch (error) {
