@@ -106,8 +106,8 @@ const AddTask = () => {
                       }}
                       value={task.status}>
                       <option vlaue="none" disabled >---Select Status---</option>
-                        <option vlaue="Pending">Pending</option>
-                        <option vlaue="Complete">Complete</option>
+                        <option vlaue="pending">Pending</option>
+                        <option vlaue="complete">Complete</option>
                       </select>
                     </div>
                       <div className='mt-4 flex justify-center '>
